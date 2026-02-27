@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" font-family="'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif" role="img" aria-label="Architecture: robots, robot PC services and the Isaac Sim twin">
+<title>How servo angles travel from the robots into the PhysX joint drives of the twin</title>
+<defs>
+  <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0V24" fill="none" stroke="#ffffff" stroke-opacity=".035"/></pattern>
+  <linearGradient id="bar" x1="0" x2="1"><stop offset="0" stop-color="#76b900"/><stop offset="1" stop-color="#4d7a00"/></linearGradient>
+</defs>
+<rect width="1200" height="520" rx="18" fill="#0b0b0b"/>
+<rect x="1" y="1" width="1198" height="518" rx="17" fill="url(#grid)" stroke="#2a2a2a"/>
+<rect x="0" y="516" width="1200" height="4" fill="url(#bar)"/>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#76b900"/></marker></defs>
+<style>
+  .flow { animation: flow 1.1s linear infinite; }
+  @keyframes flow { to { stroke-dashoffset: -18; } }
+  @media (prefers-reduced-motion: reduce) { .flow { animation: none; } }
+</style>
+<text x="40.0" y="50.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="12.5" letter-spacing="1.6" fill="#76b900">FROM SERVO ANGLE TO PHYSX JOINT</text>
+<text x="1160.0" y="50.0" text-anchor="end" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#6a6a6a">one HTTP endpoint between the plant and the twin</text>
+<rect x="40" y="84" width="250" height="392" rx="10" fill="#151515" stroke="#3c3c3c" stroke-opacity="1"/><rect x="40" y="96" width="3" height="368" rx="1.5" fill="#3c3c3c"/>
+<text x="60.0" y="114.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" letter-spacing="1.3" fill="#9c9c9c">PLANT</text>
+<text x="60.0" y="136.0" text-anchor="start" font-size="13.5" fill="#ffffff">uArm Swift Pro &#183; Arm 1</text><text x="60.0" y="154.0" text-anchor="start" font-size="11" fill="#9c9c9c">vacuum cup</text>
+<text x="60.0" y="188.0" text-anchor="start" font-size="13.5" fill="#ffffff">uArm Swift Pro &#183; Arm 2</text><text x="60.0" y="206.0" text-anchor="start" font-size="11" fill="#9c9c9c">gripper and wrist</text>
+<text x="60.0" y="240.0" text-anchor="start" font-size="13.5" fill="#ffffff">uArm Swift Pro &#183; Arm 3</text><text x="60.0" y="258.0" text-anchor="start" font-size="11" fill="#9c9c9c">vacuum cup</text>
+<line x1="60" y1="290" x2="272" y2="290" stroke="#2a2a2a"/>
+<text x="60.0" y="320.0" text-anchor="start" font-size="13.5" fill="#ffffff">Conveyors and light barriers</text><text x="60.0" y="338.0" text-anchor="start" font-size="11" fill="#9c9c9c">PLC-driven on the real cell</text>
+<text x="60.0" y="372.0" text-anchor="start" font-size="13.5" fill="#ffffff">Optional companion</text><text x="60.0" y="390.0" text-anchor="start" font-size="11" fill="#9c9c9c">TIA S7 Copilot (PLC + chat)</text>
+<text x="60.0" y="450.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#6a6a6a">USB serial &#183; firmware IK</text>
+<rect x="370" y="84" width="330" height="392" rx="10" fill="#151515" stroke="#76b900" stroke-opacity=".7"/><rect x="370" y="96" width="3" height="368" rx="1.5" fill="#76b900"/>
+<text x="390.0" y="114.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" letter-spacing="1.3" fill="#76b900">ROBOT PC &#183; PYTHON</text>
+<text x="390.0" y="136.0" text-anchor="start" font-size="13.5" fill="#ffffff">SwiftAPI per arm</text><text x="390.0" y="154.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">serial link shared with motion</text>
+<text x="390.0" y="188.0" text-anchor="start" font-size="13.5" fill="#ffffff">ServoTelemetry</text><text x="390.0" y="206.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">arms 1+3 async, arm 2 sync + wrist</text>
+<text x="390.0" y="240.0" text-anchor="start" font-size="13.5" fill="#ffffff">FastAPI service :8001</text><text x="390.0" y="258.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">GET /api/servo_angles, /api/state</text>
+<line x1="390" y1="272" x2="682" y2="272" stroke="#2a2a2a"/>
+<text x="390.0" y="300.0" text-anchor="start" font-size="13.5" fill="#ffffff">cell_demo</text><text x="390.0" y="318.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">standalone: runs the arm programs</text>
+<text x="390.0" y="352.0" text-anchor="start" font-size="13.5" fill="#ffffff">or the copilot controller</text><text x="390.0" y="370.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">ServoTelemetry(...).attach(app)</text>
+<text x="390.0" y="404.0" text-anchor="start" font-size="13.5" fill="#ffffff">launcher</text><text x="390.0" y="422.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">waits for telemetry, starts Isaac Sim</text>
+<text x="390.0" y="450.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#6a6a6a">calibrate: limp servos, pose, capture</text>
+<rect x="780" y="84" width="380" height="392" rx="10" fill="#151515" stroke="#76b900" stroke-opacity=".7"/><rect x="780" y="96" width="3" height="368" rx="1.5" fill="#76b900"/>
+<text x="800.0" y="114.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11.5" letter-spacing="1.3" fill="#76b900">NVIDIA ISAAC SIM 5.x</text>
+<text x="800.0" y="136.0" text-anchor="start" font-size="13.5" fill="#ffffff">follower thread</text><text x="800.0" y="154.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">HTTP poll 120 Hz, keeps the latest sample</text>
+<text x="800.0" y="188.0" text-anchor="start" font-size="13.5" fill="#ffffff">PhysX step callback &#183; 60 Hz</text><text x="800.0" y="206.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">calibrate &#8594; clamp &#8594; rate limit &#8594; EMA</text>
+<text x="800.0" y="240.0" text-anchor="start" font-size="13.5" fill="#ffffff">dynamic_control targets</text><text x="800.0" y="258.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">J1 base, J2 shoulder, J6 crank, wrist</text>
+<text x="800.0" y="292.0" text-anchor="start" font-size="13.5" fill="#ffffff">articulation + 3 loop joints</text><text x="800.0" y="310.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">PD drives move links, PhysX closes loops</text>
+<line x1="800" y1="324" x2="1142" y2="324" stroke="#2a2a2a"/>
+<text x="800.0" y="352.0" text-anchor="start" font-size="13.5" fill="#ffffff">OmniGraph: conveyor controller</text><text x="800.0" y="370.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">S1-S4 sphere sweeps, surface velocity</text>
+<text x="800.0" y="404.0" text-anchor="start" font-size="13.5" fill="#ffffff">OmniGraph: vacuum and gripper</text><text x="800.0" y="422.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#9c9c9c">pick-as-is fixed joints, no snapping</text>
+<text x="800.0" y="450.0" text-anchor="start" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="11" fill="#6a6a6a">scene/cell.usda &#183; generated from primitives</text>
+<path d="M292 200H366" stroke="#76b900" stroke-width="2" stroke-dasharray="5 4" class="flow" marker-end="url(#arrow)" fill="none"/><text x="329.0" y="190.0" text-anchor="middle" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" fill="#d0d0d0">servo angles</text>
+<path d="M702 252H776" stroke="#76b900" stroke-width="2" stroke-dasharray="5 4" class="flow" marker-end="url(#arrow)" fill="none"/><text x="739.0" y="242.0" text-anchor="middle" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" fill="#d0d0d0">JSON 1 Hz</text>
+<path d="M702 408H776" stroke="#76b900" stroke-width="2" stroke-dasharray="5 4" class="flow" marker-end="url(#arrow)" fill="none"/><text x="739.0" y="398.0" text-anchor="middle" font-family="'Cascadia Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace" font-size="10.5" fill="#d0d0d0">starts</text>
+</svg>
