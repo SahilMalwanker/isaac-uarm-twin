@@ -28,6 +28,20 @@
 
 **Isaac uArm Twin** is a real-time, physics-driven digital twin of a three-arm PCB assembly cell in **NVIDIA Isaac Sim 5.x**. Live servo angles from three physical **uArm Swift Pro** robots stream over HTTP into calibrated PhysX joint drives, while closed-loop parallel linkages, surface-velocity conveyor belts, sphere-sweep light barriers (`S1`–`S4`) and pick-as-is fixed joints reproduce the complete assembly cycle. It runs standalone or attaches directly to the companion [TIA S7 Copilot](../../../tia-s7-copilot) robot controller.
 
+## Relationship to TIA S7 Copilot
+
+This project extends [TIA S7 Copilot](https://github.com/SahilMalwanker/tia-s7-copilot)
+with a physics-driven digital twin in NVIDIA Isaac Sim. TIA S7 Copilot handles
+the operator interface, PLC communication and physical robot coordination;
+Isaac uArm Twin adds calibrated servo-to-PhysX following, closed-loop robot
+linkages, conveyors and sensor simulation.
+
+The integration uses an optional telemetry hook in the copilot's robot
+controller, allowing the twin to read servo angles without opening additional
+serial connections. A standalone runner is also provided.
+
+See [Connecting the Plant](docs/integration.md) for setup instructions.
+
 ## One Cycle in the Digital Twin
 
 <p align="center">
